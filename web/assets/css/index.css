@@ -1,0 +1,613 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+nav {
+    padding: 5px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    z-index: 1;
+    position: fixed; /* Agrega posición fija */
+    top: 0; /* Alinea el nav en la parte superior */
+    left: 0; /* Alinea el nav a la izquierda */
+    width: 100%; /* Ancho completo */
+    background-color: #fff; /* Fondo del nav */
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+}
+
+nav .logo img {
+    border-radius: 50px;
+    height: 60px;
+    width: auto;
+    margin-right: 10px;
+}
+
+nav .logo h1 {
+    font-size: 1.2rem;
+    background: #000;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 1.5rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 95%;
+    font-weight: 400;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+nav ul li a.active {
+    color: #E67E22;
+    background-color: rgba(230, 126, 34, 0.1);
+}
+
+nav ul li a:hover {
+    color: #E67E22;
+    transition: 0.6s ease;
+}
+
+/* Hamburguer para cuano se achique la patanlla */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+/* Agregamos esta regla para ocultar el ícono cuando el menú está activo */
+.active .hamburger {
+    display: none;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 1px;
+    background-color: #1f1f1f;
+    display: block;
+    margin: 7px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger-active {
+    transition: all 0.3s ease-in-out;
+    transition-delay: 0.6s;
+    transform: rotate(45deg);
+}
+
+.hamburger-active .line:nth-child(2) {
+    width: 0px;
+}
+
+.hamburger-active .line:nth-child(1),
+.hamburger-active .line:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.hamburger-active .line:nth-child(1) {
+    transform: translateY(12px);
+}
+
+.hamburger-active .line:nth-child(3) {
+    transform: translateY(-5px) rotate(90deg);
+}
+
+.menubar {
+    position: fixed;
+    top: 0;
+    left: -60%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 60%;
+    height: 100vh;
+    padding: 20% 0;
+    background: rgba(255, 255, 255);
+    transition: all 0.5s ease-in;
+    z-index: 2;
+}
+
+.active {
+    left: 0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.menubar ul {
+    padding: 0;
+    list-style: none;
+}
+
+.menubar ul li {
+    margin-bottom: 32px;
+}
+
+.menubar ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 95%;
+    font-weight: 400;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.menubar ul li a:hover {
+    color: #E67E22;
+    transition: 0.6s ease;
+}
+
+@media screen and (max-width: 790px) {
+    .hamburger {
+        display: block;
+    }
+    nav ul {
+        display: none;
+    }
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: #922b21;
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 15px;
+}
+
+.dropdown-content {
+
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-10px);
+}
+
+.dropdown-content a {
+
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.material-icons {
+    margin-left: 8px;
+}
+
+/*IMAGEN CENTRAL Y PORTADA*/
+.hero-section {
+    height: 100vh;
+    background-image: url("../img/portada.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.hero-section .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    color: #fff;
+}
+
+.hero-section .content h2 {
+    font-size: 4rem;
+    max-width: 600px;
+    line-height: 70px;
+}
+
+.hero-section .content p {
+    font-size: 20px;
+    font-weight: 500;
+    max-width: 600px;
+    margin-top: 10px;
+}
+
+.hero-section .content button  {
+    color: white;
+    background: #E67E22;
+    padding: 12px 30px;
+    border: none;
+    font-size: 1rem;
+    border-radius: 6px;
+    margin-top: 38px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.4s ease;
+}
+
+.hero-section .content button:hover{
+    color: black;
+    background: white;
+}
+
+/* APARTADO DE COMUNDAD*/
+.comunidad{
+    padding: 40px;
+}
+
+.title-comunidad{
+    margin-top: -20px;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 50px;
+
+}
+.title-comunidad p{
+    margin-top: -20px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.container-cards-co {
+    justify-content: center;
+    grid-gap: 50px;
+    display: flex;
+}
+
+.card-container {
+    width: 420px;
+    height: 420px;
+    position: relative;
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.card-container::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #e0e0e0 0%, #a3a3a3 100%);
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(20px);
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
+    position: relative;
+}
+
+.card .img-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #e0e0e0 0%, #a3a3a3 100%);
+    transition: scale 0.6s, rotate 0.6s, filter 1s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card .img-content img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.card .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    color: #e8e8e8;
+    padding: 20px;
+    line-height: 1.5;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(50px);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.card .content .heading {
+    font-size: 22px;
+    font-weight: 1000;
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+.card .content p {
+    margin-top: -20px;
+    text-align: justify;
+    font-size: 16px;
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+
+}
+
+.card:hover .content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover .img-content {
+    scale: 2.5;
+    rotate: 30deg;
+    filter: blur(7px);
+}
+
+.card:hover .img-content svg {
+    fill: transparent;
+}
+@media screen and (max-width: 600px) {
+    .container-cards-co {
+        display: flex;
+        flex-direction: column; /* Asegurar que las cartas se coloquen en columnas en pantallas pequeñas */
+        align-items: center; /* Centrar horizontalmente las cartas */
+    }
+
+    .card-container {
+        width: calc(100% - 20px); /* Ancho completo de la tarjeta menos el espacio entre ellas */
+        margin-bottom: 20px; /* Espacio entre las cartas */
+    }
+}
+
+.fancy-button {
+    display: block; /* Cambiado a display: block; para permitir márgenes automáticos */
+    width: fit-content; /* Opcional: ajusta el ancho del botón al contenido */
+    margin: 40px auto; /* Márgenes automáticos para centrar horizontalmente */
+    padding: 10px 20px;
+    border: none;
+    background-color: #E67E22;
+    color: #fff;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    text-align: center; /* Opcional: asegura el centrado horizontal del contenido del botón */
+}
+
+
+.fancy-button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: skewX(-30deg);
+    transition: left 0.3s ease-in-out;
+}
+
+.fancy-button:hover {
+    transform: scale(1.1);
+}
+
+.fancy-button:hover:before {
+    left: 100%;
+}
+a{
+    text-decoration: none;
+}
+/*Acerca de nosotros*/
+.title-nosotros {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 40px; /* Tamaño de fuente para el título */
+    margin-bottom: 10px; /* Margen inferior para separarlo del párrafo */
+}
+
+/* Selector para el párrafo p */
+.p-nosotros {
+    text-align: center;
+    font-size: 16px; /* Tamaño de fuente para el párrafo */
+}
+
+#about-section {
+    margin-top: -70px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px 12%;
+    margin-bottom: 40px;
+}
+
+.about-left img{
+    border-radius: 30px;
+    margin-top: -70px;
+    margin-right: 70px;
+    width: 500px;
+    height: 400px;
+
+    transform: translateY(50px);
+}
+
+.about-right {
+    width: 54%;
+}
+
+.about-right ul li {
+    margin-left: -30px;
+    display: flex;
+    align-items: center;
+}
+
+.about-right h1 {
+    color: #E67E22;
+    font-size: 37px;
+    margin-bottom: 5px;
+}
+
+.about-right p {
+    text-align: justify;
+    color: #444;
+    line-height: 26px;
+    font-size: 15px;
+}
+
+.about-right .address {
+    margin: 25px 0;
+}
+
+.about-right .address ul li {
+    margin-bottom: 5px;
+}
+
+.address .address-logo {
+    margin-right: 20px;
+    color: #E67E22;
+}
+
+.address .saprater {
+    margin: 0 35px;
+}
+
+@media screen and (max-width: 1024px) {
+    #about-section {
+        flex-direction: column; /* Cambiar a disposición de columna en pantallas más pequeñas */
+        align-items: center; /* Centrar horizontalmente los elementos */
+        padding: 50px 8%; /* Ajustar el relleno */
+    }
+
+    .about-left,
+    .about-right {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+        order: 2; /* Cambiar el orden de los elementos */
+    }
+
+    .about-left img {
+        margin-top: 10px;
+        margin-left: 35px;
+        width: 80%; /* Hacer que la imagen ocupe el 80% del ancho disponible */
+        height: auto; /* Altura automática para mantener la proporción */
+        margin-bottom: 30px; /* Espacio entre la imagen y el contenido */
+        border-radius: 15px; /* Reducir el radio de borde */
+    }
+}
+
+/*Footer - pie de pagina*/
+.container-footer{
+    width: 100%;
+    padding: 40px 0;
+    background: #F2F3F4;
+    margin-top: -80px;
+}
+
+.container-footer footer{
+    max-width: 1200px;
+    margin: auto;
+}
+
+.container-footer footer .logo-footer{
+    text-align: center;
+}
+
+.container-footer footer .logo-footer img{
+    width: 100px;
+}
+.container-footer footer .descripcion{
+    text-align: center;
+}
+
+.container-footer footer .redes-footer{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.container-footer footer .redes-footer .icon-redes-footer{
+    font-size: 20px;
+    margin: 20px;
+    background: #E67E22;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    color: white;
+    text-decoration: none;
+}
+
+footer .redes-footer .fa-facebook-f:hover{
+    background: gray;
+    color: #fff;
+}
+
+footer .redes-footer .fa-phone:hover{
+    background: gray;
+    color: #fff;
+}
+
+footer .redes-footer .fa-envelope:hover{
+    background: gray;
+    color: #fff;
+}
+
+.container-footer footer hr{
+    margin-top: 20px;
+    border: none;
+    height: 2px;
+    background: #E67E22;
+}
+
+.container-footer h4{
+    text-align: center;
+    margin-top: 30px;
+    color: black;
+    font-weight: 400;
+}
+
